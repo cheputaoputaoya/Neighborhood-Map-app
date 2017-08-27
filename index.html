@@ -1,0 +1,104 @@
+<html lang="en"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>Neiborhood Map</title>
+
+    <!-- Bootstrap -->
+    <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="./bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="./build/css/custom.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md" cz-shortcut-listen="true">
+    <div id="loading" style="width: 20px,height: 20px" >
+      <img src="./build/images/looding.gif" style="z-index: 1000">
+    </div>
+    <div class="container body" style="z-index: -1">
+      <div class="main_container" style="height:100vh; overflow: hidden;">
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <div class="pull-right" style="line-height:42px; padding-right: 5px">
+              This app uses foursquare API
+            </div>          
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+            </nav>
+          </div>
+        </div>
+
+        <!--left part:filter list-->
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><span>Bart Location</span></a>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="input-group">
+              <input type="text" name="zoomTo" class="form-control" placeholder = "New York, NY, United States">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" id="zoom" data-bind="click:zoomTo">Zoom</button>
+              </span> 
+            </div>
+
+            <div class="input-group">
+              <input type="text" name="filter" class="form-control" placeholder="Input here to filter places" data-bind="value:keyword, valueUpdate: 'afterkeydown', event:{keyup:filter}" >
+              <span class="input-group-btn">
+                <button class="btn btn-primary glyphicon glyphicon-search"></button>
+              </span>               
+              <!-- <span class="input-group-addon glyphicon glyphicon-search"> </span>   -->           
+            </div>
+
+
+            <ul id="listItems" class="nav side-menu" data-bind="foreach: locations">
+              <ul class="nav child_menu" style="display: block;">
+                <li data-bind="visible:show, click:clickList">
+                  <a href="#" data-bind="text:title"></a>
+                </li>                
+              </ul>
+            </ul>            
+          </div>
+        </div>
+        
+        <!-- right part:content -->
+        <div class="right_col" role="main" style="min-height: 275.8px;">   
+          <div class="row">
+            <div id="map" style="position: relative; width: 100%;height: 100%"></div>
+          </div>
+                  <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        </div>
+
+    <!-- jQuery -->
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Custom Theme Scripts --> 
+    <script src="./build/js/custom.js"></script>
+
+    <!--knockout-->
+    <script type="text/javascript" src="./bower_components/knockout/dist/knockout.js"></script>
+    <!--Google map Script-->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_3NWsJT4Al_7STPCPH9xaDUe58-M1S_o&libraries=places,geometry&v=3&callback=initMap">
+    </script>
+    <!--customized code-->
+    <script type="text/javascript" src="./build/js/app.js"></script>
+</div>
+</div>
+</body>
+</html>
